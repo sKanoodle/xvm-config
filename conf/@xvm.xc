@@ -139,7 +139,7 @@
 
   // Minimap.
   // Миникарта.
-  "minimap": ${"minimap.xc":"minimap"},
+  "minimap": ${"minimap/minimap.xc":"minimap"},
 
   // Minimap (alternative mode).
   // Миникарта (альтернативный режим).
@@ -147,7 +147,7 @@
 
   // Over-target markers.
   // Маркеры над танками.
-  "markers": ${"markers.xc":"markers"},
+  "markers": ${"markers/markers.xc":"markers"},
 
   // Color settings.
   // Настройки цветов.

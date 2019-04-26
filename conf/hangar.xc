@@ -393,7 +393,7 @@
     },
     // Parameters for tank carousel.
     // Параметры карусели танков.
-    "carousel": ${"carousel.xc":"carousel"},
+    "carousel": ${"carousel/carousel.xc":"carousel"},
     // Parameters for widgets.
     // Параметры виджетов.
     "widgets": ${"widgets.xc":"widgets.lobby"}
