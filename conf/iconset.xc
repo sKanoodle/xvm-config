@@ -6,8 +6,8 @@
   "iconset": {
     // Folder containing the icon set for Battle Loading Screen.
     // Набор иконок для экрана загрузки боя.
-    "battleLoadingAlly": "contour/",
-    "battleLoadingEnemy": "contour/",
+    "battleLoadingLeftAtlas": "battleAtlas",
+    "battleLoadingRightAtlas": "battleAtlas",
     // Folder containing the icon set for the Players Panels.
     // Набор иконок для "ушей".
     "playersPanelLeftAtlas": "battleAtlas",

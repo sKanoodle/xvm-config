@@ -13,12 +13,12 @@
     }
   },
   "statisticForm": {
-    // true - Enable display of battle tier.
-    // true - включить отображение уровня боя.
-    "showBattleTier": false,
     // true - Disable Platoon icons.
     // true - убрать отображение иконки взвода.
     "removeSquadIcon": false,
+    // true - disable rank badge icons.
+    // true - убрать отображение иконки бейджа ранга.
+    "removeRankBadgeIcon": false,
     // Opacity percentage of vehicle icon. 0 - transparent ... 100 - opaque.
     // Прозрачность в процентах иконки танка. 0 - прозрачные, 100 - не прозрачные.
     "vehicleIconAlpha": 100,
@@ -28,6 +28,9 @@
     // true - disable vehicle type icon. This space will be used for formatted vehicle field.
     // true - убрать отображение типа танка. Пустое место будет использовано под форматируемое поле.
     "removeVehicleTypeIcon": false,
+    // true - disable player status icon.
+    // true - убрать отображение иконки статуса игрока.
+    "removePlayerStatusIcon": false,
     // Show border for name field (useful for config tuning)
     // Показывать рамку для поля имени игрока (полезно для настройки конфига)
     "nameFieldShowBorder": false,

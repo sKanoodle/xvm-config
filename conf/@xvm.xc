@@ -58,15 +58,15 @@
 
     // Config last modified.
     // Дата последней модификации конфига.
-    "date": "11.08.2016",
+    "date": "26.04.2019",
 
     // Supported version of the game.
     // Поддерживаемая версия игры.
-    "gameVersion": "0.9.15.1.1",
+    "gameVersion": "1.4.1.2",
 
     // The minimum required version of the XVM mod.
     // Минимально необходимая версия мода XVM.
-    "modMinVersion": "6.4.1.1"
+    "modMinVersion": "7.8.7"
   },
 
   // Parameters for login screen.
@@ -184,4 +184,8 @@
   // XMQP services settings
   // Настройки сервисов XMQP
   "xmqp": ${"xmqp.xc":"xmqp"}
+
+  // Various settings for advanced users.
+  // Различные настройки для продвинутых пользоватей.
+  "tweaks": ${"tweaks.xc":"tweaks"}
 }

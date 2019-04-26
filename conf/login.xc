@@ -13,6 +13,9 @@
     // Auto confirm old replays playing
     // Автоматически подтверждать проигрывание старых реплеев
     "confirmOldReplays": false,
+    // Do not show the specified servers in the servers list, for example, ["RU1", "RU3"]
+    // Не показывать заданные серверы в выпадающем списке серверов, например, ["RU1", "RU3"]
+    "disabledServers": [],
     // Ping servers
     // Пинг серверов
     "pingServers": {
@@ -35,6 +38,10 @@
       // Transparency
       // Прозрачность от 0 до 100
       "alpha": 80,
+      // If set, draw image at background.
+      // Фоновое изображение, если задано.
+      // example: "bgImage": "cfg://My/img/my.png",
+      "bgImage": null,
       // Server to response time text delimiter
       // Разделитель сервера от времени отклика
       "delimiter": ": ",
@@ -62,6 +69,9 @@
       // text to show in case of error
       // текст показываемый в случае ошибки
       "errorString": "--",
+      // List of ignored servers, for example, ["RU1", "RU3"]
+      // Список игнорируемых серверов, например, ["RU1", "RU3"]
+      "ignoredServers": [],
       // Text style
       // Стиль текста
       "fontStyle": {
@@ -129,6 +139,10 @@
       // Transparency
       // Прозрачность от 0 до 100
       "alpha": 80,
+      // If set, draw image at background.
+      // Фоновое изображение, если задано.
+      // example: "bgImage": "cfg://My/img/my.png",
+      "bgImage": null,
       // Server to online text delimiter
       // Разделитель сервера от онлайна
       "delimiter": ": ",
@@ -156,6 +170,9 @@
       // text to show in case of error
       // текст показываемый в случае ошибки
       "errorString": "--k",
+      // List of ignored servers, for example, ["RU1", "RU3"]
+      // Список игнорируемых серверов, например, ["RU1", "RU3"]
+      "ignoredServers": [],
       // Text style
       // Стиль текста
       "fontStyle": {
@@ -197,6 +214,9 @@
         "blur": 4,
         "strength": 2
       }
-    }
+    },
+    // Parameters for widgets
+    // Параметры виджетов
+    "widgets": ${"widgets.xc":"widgets.login"}
   }
 }

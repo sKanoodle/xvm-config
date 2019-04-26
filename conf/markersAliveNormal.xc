@@ -18,6 +18,7 @@
       // Opacity (dynamic transparency allowed, see macros.txt).
       // Прозрачность (допускается использование динамической прозрачности, см. macros.txt)
       "alpha": 100,
+      "align": "center",
       // Font options.
       // Параметры шрифта.
       "textFormat": {
@@ -26,7 +27,6 @@
         // Color (dynamic colors allowed, see macros.txt).
         // Цвет (допускается использование динамического цвета, см. macros.txt)
         "color": null,
-        "align": "center",              // Text alignment (left, center, right) /   Выравнивание текста (left, center, right)
         "bold": false,                  // True - bold    / Жирный.
         "italic": false                 // True - italic  / Курсив.
       },
@@ -64,11 +64,11 @@
       "x": 0,
       "y": -36,
       "alpha": 100,
+      "align": "center",
       "textFormat": {
         "font": "$FieldFont",
         "size": 13,
         "color": null,
-        "align": "center",
         "bold": false,
         "italic": false
       },
@@ -91,13 +91,13 @@
       "x": 0,                         // положение по оси X
       "y": -51,                       // положение по оси Y
       "alpha": 100,                   // прозрачность (допускается использование динамической прозрачности, см. macros.txt)
+      "align": "center",              // выравнивание текста (left, center, right)
       // Font options.
       // Параметры шрифта.
       "textFormat": {
         "font": "$FieldFont",         //   название
         "size": 13,                   //   размер
         "color": null,                //   цвет (допускается использование динамического цвета, см. macros.txt)
-        "align": "center",            //   выравнивание текста (left, center, right)
         "bold": false,                //   обычный (false) или жирный (true)
         "italic": false               //   обычный (false) или курсив (true)
       },
@@ -124,11 +124,11 @@
       "x": 0,
       "y": -20,
       "alpha": 100,
+      "align": "center",
       "textFormat": {
         "font": "$FieldFont",
         "size": 11,
         "color": "0xD9D9D9",
-        "align": "center",
         "bold": true,
         "italic": false
       },
@@ -151,11 +151,11 @@
       "x": -33,
       "y": -20,
       "alpha": "{{xvm-stat?100|0}}",
+      "align": "right",
       "textFormat": {
         "font": "xvm",
         "size": 16,
         "color": "{{c:r|#999999}}",
-        "align": "right",
         "bold": false,
         "italic": false
       },
@@ -178,13 +178,13 @@
       "x": 0,                         //  положение по оси X
       "y": "{{battletype?-71|{{squad?-71|-56}}}}",  //  положение по оси Y
       "alpha": 100,                   //  прозрачность (допускается использование динамической прозрачности, см. macros.txt)
+      "align": "center",              // выравнивание текста (left, center, right)
       // Font options.
       // Параметры шрифта.
       "textFormat": {
         "font": "xvm",                //  название
         "size": 23,                   //  размер
         "color": "0xFFBB00",          //  цвет (допускается использование динамического цвета, см. macros.txt)
-        "align": "center",            //  выравнивание текста (left, center, right)
         "bold": false,                //  обычный (false) или жирный (true)
         "italic": false               //  обычный (false) или курсив (true)
       },
@@ -211,11 +211,11 @@
       "x": 0,                         //  положение по оси X
       "y": -51,                       //  положение по оси Y
       "alpha": 100,                   //  прозрачность (допускается использование динамической прозрачности, см. macros.txt)
+      "align": "center",              //  выравнивание текста (left, center, right)
       "textFormat": {                 //  параметры шрифта
         "font": "$FieldFont",         //  название
         "size": 13,                   //  размер
         "color": "0xEDEDED",          //  цвет (допускается использование динамического цвета, см. macros.txt)
-        "align": "center",            //  выравнивание текста (left, center, right)
         "bold": false,                //  обычный (false) или жирный (true)
         "italic": false               //  обычный (false) или курсив (true)
       },
@@ -333,6 +333,23 @@
       "y": -67,          // Position on the Y axis / Положение по оси Y.
       "alpha": 100       // Opacity                / Прозрачность.
     },
+    // Stun marker and consumables marker in "Frontline Returns" mode (smoke screen, morale boost, engineering crew).
+    // Маркер оглушения и маркер боевого снаряжения в режиме "Линия фронта" (дымовая завеса, воодушевление, инженерный отряд).
+    "vehicleStatusMarker": {
+      "enabled": true,   // false - disable        / не отображать.
+      "x": 0,            // Position on the X axis / Положение по оси X.
+      "y": -67,          // Position on the Y axis / Положение по оси Y.
+      "alpha": 100       // Opacity                / Прозрачность.
+    },
+    // Damage indicator (ricochet, critical hit, ...).
+    // Индикатор урона (рикошет, критический урон, ...).
+    "damageIndicator": {
+      "enabled": true,   // false - disable        / не отображать.
+      "showText": true,  // false - show only icon / показывать только иконку.
+      "x": 53,           // Position on the X axis / Положение по оси X.
+      "y": -27,          // Position on the Y axis / Положение по оси Y.
+      "alpha": 100       // Opacity                / Прозрачность.
+    },
     // Block of text fields.
     // Блок текстовых полей.
     "textFields": [
@@ -416,6 +433,23 @@
       "enabled": true,
       "x": 0,
       "y": -67,
+      "alpha": 100
+    },
+    // Stun marker and consumables marker in "Frontline Returns" mode (smoke screen, morale boost, engineering crew).
+    // Маркер оглушения и маркер боевого снаряжения в режиме "Линия фронта" (дымовая завеса, воодушевление, инженерный отряд).
+    "vehicleStatusMarker": {
+      "enabled": true,
+      "x": 0,
+      "y": -67,
+      "alpha": 100
+    },
+    // Damage indicator (ricochet, critical hit, ...).
+    // Индикатор урона (рикошет, критический урон, ...).
+    "damageIndicator": {
+      "enabled": true,
+      "showText": true,
+      "x": 53,
+      "y": -27,
       "alpha": 100
     },
     // Block of text fields.

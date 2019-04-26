@@ -22,6 +22,15 @@
     // Background transparency (default - 100)
     // Прозрачность подложки (по умолчанию - 100)
     "backgroundAlpha": 80,
+    // Slot transparency (default - 100).
+    // Прозрачность слота (по умолчанию - 100).
+    "slotBackgroundAlpha": 100,
+    // Slot border transparency (default - 100).
+    // Прозрачность рамки слота (по умолчанию - 100).
+    "slotBorderAlpha": 100,
+    // Transparency of gradient frames at the carousel edges (default - 100).
+    // Прозрачность градиентных рамок  по краям карусели (по умолчанию - 100).
+    "edgeFadeAlpha": 100,
     // Mouse wheel scrolling speed multiplier (default - 1)
     // Множитель скорости прокрутки колесом мыши (по умолчанию - 1)
     "scrollingSpeed": 1,
@@ -31,12 +40,18 @@
     // true - hide cell "Buy slot".
     // true - скрыть ячейку "Купить слот".
     "hideBuySlot": false,
+    // true - hide cell "Restore Tank".
+    // true - скрыть ячейку "Восстановить машину".
+    "hideRestoreTank": false,
     // true - show total slots count in the "Buy vehicle" cell.
     // true - показывать общее количество слотов в ячейке "Купить машину".
     "showTotalSlots": false,
     // true - show used slots count in the "Buy slot" cell.
     // true - показывать количество занятых слотов в ячейке "Купить слот".
     "showUsedSlots": true,
+    // set to false to remove background for locked vehicles (default: true).
+    // поставить false, чтобы отключить фон для заблокированной техники (по-умолчанию: true).
+    "enableLockBackground": true,
     // Visibility filters.
     // Видимость фильтров.
     "filters": {

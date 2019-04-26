@@ -4,9 +4,35 @@
  */
 {
   "userInfo": {
-    // Initial page (1, 2, 3, 4).
-    // Номер начальной страницы (1, 2, 3, 4).
-    "startPage": 4,
+
+    // Initial page for current user service record.
+    // Available values:
+    //    "summary"    - "Summary" page
+    //    "awards"     - "Awards" page
+    //    "statistics" - "Statistics" page
+    //    "vehicles"   - "Vehicles" page
+    //    "hof"        - "Hall of Fame" page
+    // Начальная страница достижений текущего пользователя.
+    // Допустимые значения:
+    //    "summary"    - страница "Сводка"
+    //    "awards"     - страница "Награды"
+    //    "statistics" - страница "Статистика"
+    //    "vehicles"   - страница "Техника"
+    //    "hof"        - страница "Зал славы"
+    "profileStartPage": "vehicles",
+    // Initial page for other players service records.
+    // Available values:
+    //    "summary"    - "Summary" page
+    //    "awards"     - "Awards" page
+    //    "statistics" - "Statistics" page
+    //    "vehicles"   - "Vehicles" page
+    // Начальная страница достижений других игроков.
+    // Допустимые значения:
+    //    "summary"    - страница "Сводка"
+    //    "awards"     - страница "Награды"
+    //    "statistics" - страница "Статистика"
+    //    "vehicles"   - страница "Техника"
+    "contactsStartPage": "vehicles",
     // number of column for sorting by default. Sort order: >0 - ascending, <0 - descending
     // номер колонки для сортировки по умолчанию. Порядок сортировки: >0 - по возрастанию, <0 - по убыванию
     // 1 - Nation      / Нация

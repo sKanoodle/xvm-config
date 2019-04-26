@@ -6,29 +6,42 @@
   // Definitions.
   // Шаблоны.
   "def": {
-    "hitlogHeader": {
+    // Header of the log of applied damage.
+    // Заголовок лога нанесенного урона.
+    "hitLogHeader": {
       "enabled": false,
-      "updateEvent": "ON_DAMAGE_CAUSED, ON_PANEL_MODE_CHANGED",
+      "updateEvent": "PY(ON_TOTAL_EFFICIENCY), ON_PANEL_MODE_CHANGED",
       "x": "{{pp.mode=0?5|{{py:sum({{pp.widthLeft}},50)}}}}",
-      "y": "{{pp.mode=0?65|40}}",
-      "width": 500,
-      "height": 1000,
+      "y": "{{pp.mode=0?65|35}}",
+      "width": 300,
+      "height": 22,
       "textFormat": { "color": "0xF4EFE8", "size": 15 },
-      "format": "{{hitlog-header}}"
-      // Format of the full hitlog (header and body)
-      // Формат полного хит-лога (шапка и тело)
-      // "format": "{{hitlog-header}}\n{{hitlog-body}}"
+      "format": "{{py:xvm.totalDamage=0?{{l10n:Hits}}: <font size='13'>#0</font>|{{l10n:Hits}}: <font size='13'>#{{py:xvm.numberHitsDealt}}</font> {{l10n:Total}}: <font color='{{py:xvm.totalDamageColor}}'><b>{{py:xvm.totalDamage}}</b></font> {{l10n:Last}}: <font color='{{py:xvm.dmgKindColor}}'><b>{{py:xvm.dmg}}</b></font>}}"
     },
-    "hitlogBody": {
+    // Log of applied damage (see hitLog.xc).
+    // Лог нанесенного урона (см. hitLog.xc).
+    "hitLogBody": {
       "enabled": true,
-      "hotKeyCode": 56, "onHold": "true", "visibleOnHotKey": false,
-      "updateEvent": "ON_DAMAGE_CAUSED, ON_PANEL_MODE_CHANGED",
-      "x": "{{pp.mode=0?5|{{py:sum({{pp.widthLeft}},50)}}}}",
-      "y": "{{pp.mode=0?95|65}}",
+      "updateEvent": "PY(ON_HIT_LOG), ON_PANEL_MODE_CHANGED",
+      "x": "{{pp.mode=0?5|{{py:sum({{pp.widthLeft}},{{py:xvm.hitLog.log.x}})}}}}",
+      "y": "{{pp.mode=0?90|{{py:xvm.hitLog.log.y}}}}",
       "width": 500,
       "height": 1000,
+      "layer": "bottom",
       "textFormat": { "color": "0xF4EFE8", "size": 15 },
-      "format": "{{hitlog-body}}"
+      "format": "{{py:xvm.hitLog.log}}",
+      "mouseEvents": {
+        "mouseDown": "hitLog_mouseDown",
+        "mouseUp": "hitLog_mouseUp",
+        "mouseMove": "hitLog_mouseMove"
+      }
+    },
+    // Background of the log of applied damage.
+    // Подложка лога нанесенного урона.
+    "hitLogBackground": {
+      "enabled": false,
+      "$ref": { "path":"def.hitLogBody" },
+      "format": "{{py:xvm.hitLog.log.bg}}"
     },
     // Total hp indicator.
     // Индикатор общего HP команд.
@@ -47,88 +60,89 @@
     // Средний урон на текущей технике.
     "avgDamage": {
       "enabled": true,
-      "updateEvent": "PY(ON_UPDATE_HP)",
+      "updateEvent": "PY(ON_TOTAL_EFFICIENCY)",
       "x": -170,
       "y": 30,
       "screenHAlign": "center",
       "align": "right",
       "shadow": { "distance": 1, "angle": 90, "alpha": 80, "blur": 5, "strength": 1.5 },
       "textFormat": { "size": 15, "align": "center" },
-      "format": "{{py:xvm.total_hp.avgDamage('{{l10n:avgDamage}}: ',{{hitlog.dmg-total}})}}"
+      "format": "{{py:xvm.total_hp.avgDamage('{{l10n:avgDamage}}: ',{{py:xvm.totalDamage}})}}"
     },
     // Threshold necessary for achievements "High caliber".
     // Порог необходимый для получения достижения "Основной калибр".
     "mainGun": {
       "enabled": true,
-      "updateEvent": "PY(ON_UPDATE_HP)",
+      "updateEvent": "PY(ON_TOTAL_EFFICIENCY)",
       "x": 170,
       "y": 30,
       "screenHAlign": "center",
       "shadow": { "distance": 1, "angle": 90, "alpha": 80, "blur": 5, "strength": 1.5 },
       "textFormat": { "size": 15, "align": "center" },
-      "format": "{{py:xvm.total_hp.mainGun('{{l10n:mainGun}}: ',{{hitlog.dmg-total}})}}"
+      "format": "{{py:xvm.total_hp.mainGun('{{l10n:mainGun}}: ',{{py:xvm.totalDamage}})}}"
     },
     // Log of the received damage (see damageLog.xc).
     // Лог полученного урона (см. damageLog.xc).
     "damageLog": {
       "enabled": true,
       "updateEvent": "PY(ON_HIT)",
-      "x": "{{py:xvm.damageLog.dLog_x}}",
-      "y": "{{py:xvm.damageLog.dLog_y}}",
+      "x": "{{py:xvm.damageLog.log.x}}",
+      "y": "{{py:xvm.damageLog.log.y}}",
       "width": 300,
       "height": 210,
       "layer": "bottom",
       "screenVAlign": "bottom",
-      "shadow": { 
-        "distance": "{{py:xvm.damageLog.dLog_shadow('distance')}}",
-        "angle": "{{py:xvm.damageLog.dLog_shadow('angle')}}",
-        "color": "{{py:xvm.damageLog.dLog_shadow('color')}}",
-        "alpha": "{{py:xvm.damageLog.dLog_shadow('alpha')}}",
-        "blur": "{{py:xvm.damageLog.dLog_shadow('blur')}}",
-        "strength": "{{py:xvm.damageLog.dLog_shadow('strength')}}",
-        "hideObject": "{{py:xvm.damageLog.dLog_shadow('hideObject')}}",
-        "inner": "{{py:xvm.damageLog.dLog_shadow('inner')}}",
-        "knockout": "{{py:xvm.damageLog.dLog_shadow('knockout')}}",
-        "quality": "{{py:xvm.damageLog.dLog_shadow('quality')}}" 
+      "shadow": {
+        "distance": "{{py:xvm.damageLog.log.shadow('distance')}}",
+        "angle": "{{py:xvm.damageLog.log.shadow('angle')}}",
+        "color": "{{py:xvm.damageLog.log.shadow('color')}}",
+        "alpha": "{{py:xvm.damageLog.log.shadow('alpha')}}",
+        "blur": "{{py:xvm.damageLog.log.shadow('blur')}}",
+        "strength": "{{py:xvm.damageLog.log.shadow('strength')}}",
+        "hideObject": "{{py:xvm.damageLog.log.shadow('hideObject')}}",
+        "inner": "{{py:xvm.damageLog.log.shadow('inner')}}",
+        "knockout": "{{py:xvm.damageLog.log.shadow('knockout')}}",
+        "quality": "{{py:xvm.damageLog.log.shadow('quality')}}"
       },
       "textFormat": { "color": "0xF4EFE8", "size": 16 },
-      "format": "{{py:xvm.damageLog.dLog}}",
+      "format": "{{py:xvm.damageLog.log}}",
       "mouseEvents": {
-        "mouseDown": "dLog_mouseDown",
-        "mouseUp": "dLog_mouseUp",
-        "mouseMove": "dLog_mouseMove"
+        "mouseDown": "damageLog_mouseDown",
+        "mouseUp": "damageLog_mouseUp",
+        "mouseMove": "damageLog_mouseMove",
+        "mouseWheel": "damageLog_mouseWheel"
       }
     },
-    // TODO (see damageLog.xc).
-    // Подложка лога полученного урона (см. damageLog.xc).    
+    // Background of the log of the received damage (see damageLog.xc).
+    // Подложка лога полученного урона (см. damageLog.xc).
     "damageLogBackground": {
       "enabled": false,
       "$ref": { "path":"def.damageLog" },
-      "format": "{{py:xvm.damageLog.dLogBackground}}"
-    },    
+      "format": "{{py:xvm.damageLog.log.bg}}"
+    },
     // Display the last damage (hit) (see damageLog.xc).
     // Отображение последнего урона (попадания) (см. damageLog.xc).
     "lastHit": {
       "enabled": true,
       "updateEvent": "PY(ON_LAST_HIT)",
-      "x": "{{py:xvm.damageLog.lastHit_x}}",
-      "y": "{{py:xvm.damageLog.lastHit_y}}",
+      "x": "{{py:xvm.damageLog.lastHit.x}}",
+      "y": "{{py:xvm.damageLog.lastHit.y}}",
       "width": 200,
       "height": 100,
       "layer": "bottom",
       "screenHAlign": "center",
       "screenVAlign": "center",
-      "shadow": { 
-        "distance": "{{py:xvm.damageLog.lastHit_shadow('distance')}}",
-        "angle": "{{py:xvm.damageLog.lastHit_shadow('angle')}}",
-        "color": "{{py:xvm.damageLog.lastHit_shadow('color')}}",
-        "alpha": "{{py:xvm.damageLog.lastHit_shadow('alpha')}}",
-        "blur": "{{py:xvm.damageLog.lastHit_shadow('blur')}}",
-        "strength": "{{py:xvm.damageLog.lastHit_shadow('strength')}}",
-        "hideObject": "{{py:xvm.damageLog.lastHit_shadow('hideObject')}}",
-        "inner": "{{py:xvm.damageLog.lastHit_shadow('inner')}}",
-        "knockout": "{{py:xvm.damageLog.lastHit_shadow('knockout')}}",
-        "quality": "{{py:xvm.damageLog.lastHit_shadow('quality')}}" 
+      "shadow": {
+        "distance": "{{py:xvm.damageLog.lastHit.shadow('distance')}}",
+        "angle": "{{py:xvm.damageLog.lastHit.shadow('angle')}}",
+        "color": "{{py:xvm.damageLog.lastHit.shadow('color')}}",
+        "alpha": "{{py:xvm.damageLog.lastHit.shadow('alpha')}}",
+        "blur": "{{py:xvm.damageLog.lastHit.shadow('blur')}}",
+        "strength": "{{py:xvm.damageLog.lastHit.shadow('strength')}}",
+        "hideObject": "{{py:xvm.damageLog.lastHit.shadow('hideObject')}}",
+        "inner": "{{py:xvm.damageLog.lastHit.shadow('inner')}}",
+        "knockout": "{{py:xvm.damageLog.lastHit.shadow('knockout')}}",
+        "quality": "{{py:xvm.damageLog.lastHit.shadow('quality')}}"
       },
       "textFormat": {"align": "center", "color": "0xF4EFE8", "size": 16 },
       "format": "{{py:xvm.damageLog.lastHit}}",
@@ -203,15 +217,15 @@
       "y": -30,
       "format": "<b>{{py:repairTimeTurret%0.1f}}</b>"
     },
-    // Repair timer for tracks
-    // Таймер ремонта сбитых гусениц
-    "repairTimeTracks": {
+    // Repair timer for complex-items (chassis\wheels)
+    // Таймер ремонта для гусениц\колёс
+    "repairTimeComplex": {
       "$ref": { "path":"def.repairTimeItem" },
       "enabled": true,
-      "updateEvent": "PY(ON_TRACKS_UPDATE)",
+      "updateEvent": "PY(ON_COMPLEX_UPDATE)",
       "x": 177,
       "y": -147,
-      "format": "<b>{{py:repairTimeTracks%0.1f}}</b>"
+      "format": "<b>{{py:repairTimeComplex}}</b>"
     },
     // Repair timer for surveying device
     // Таймер ремонта приборов наблюдения
