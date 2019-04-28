@@ -143,7 +143,7 @@
 
   // Minimap (alternative mode).
   // Миникарта (альтернативный режим).
-  "minimapAlt": ${"minimapAlt.xc":"minimap"},
+  "minimapAlt": ${"minimap/minimapAlt.xc":"minimap"},
 
   // Over-target markers.
   // Маркеры над танками.
