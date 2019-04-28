@@ -183,7 +183,7 @@
 
   // XMQP services settings
   // Настройки сервисов XMQP
-  "xmqp": ${"xmqp.xc":"xmqp"}
+  "xmqp": ${"xmqp.xc":"xmqp"},
 
   // Various settings for advanced users.
   // Различные настройки для продвинутых пользоватей.
